@@ -1,37 +1,6 @@
 # https://leetcode.com/problems/binary-tree-level-order-traversal/
 
-# approach 1 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-class Solution:
-    def levelOrder(self, root):
-        if root is None:
-            return []
-        # to strore the result
-        result = []
-        # queue, at the start it contains only root node and then we are increasing the size
-        q = [root]
-        # as long as there are elements in the queue, perform the operation
-        while q:
-            # this defines the number of nodes currently in the queue
-            size = len(q)
-            # a temporary list 
-            temp = []
-            for i in range(size):
-                # remove the first element from the queue
-                curr = q.pop(0)
-                temp.append(curr.val)
-                if curr.left:
-                    q.append(curr.left)
-                if curr.right:
-                    q.append(curr.right)
-            result.append(temp)
-        return result
-# approach 2   
+# Time complexity -O(n) Space Complexity- O(h)  
 class Solution:
     def levelOrder(self, root):
         # initialise the result
@@ -53,4 +22,5 @@ class Solution:
         self.result[level].append(root.val)
         # recursivly calling the function to get the left node values with increasing the existing level
         self.helper(root.left, level + 1)
+        # recursivly calling the function to get the right node values with increasing the existing level
         self.helper(root.right, level + 1)
