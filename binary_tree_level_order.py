@@ -12,7 +12,6 @@ class Solution:
     def helper(self, root, level):
         # handdling the edge case ending the recusrion when node is Null
         if root is None:
-            # it returns nothing
             return
         # checking the length of the result which has the number of nodes with the level 
         if len(self.result) == level:
